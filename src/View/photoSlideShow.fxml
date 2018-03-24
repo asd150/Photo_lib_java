@@ -8,14 +8,14 @@
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SlideShowController">
    <children>
-      <Button fx:id="logOutButton" layoutX="95.0" layoutY="14.0" mnemonicParsing="false" text="Logout" />
-      <Button fx:id="quitButton" layoutX="21.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Quit" />
+      <Button fx:id="logOutButton" layoutX="95.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOut" text="Logout" />
+      <Button fx:id="quitButton" layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#quit" prefHeight="26.0" prefWidth="60.0" text="Quit" />
       <Text layoutX="175.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Slideshow" textAlignment="CENTER" wrappingWidth="226.68292617797852">
          <font>
             <Font size="27.0" />
          </font>
       </Text>
-      <Button fx:id="backButton" layoutX="167.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Back" />
+      <Button fx:id="backButton" layoutX="167.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="60.0" text="Back" />
       <ImageView fx:id="view" fitHeight="244.0" fitWidth="537.0" layoutX="32.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="previousButton" layoutX="107.0" layoutY="354.0" mnemonicParsing="false" onAction="#previous" text="Previous" />
       <Button fx:id="nextButton" layoutX="390.0" layoutY="354.0" mnemonicParsing="false" onAction="#next" prefHeight="26.0" prefWidth="69.0" text="Next" />

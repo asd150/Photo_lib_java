@@ -73,7 +73,7 @@ import java.util.Optional;
         this.album1 = album;
         this.user = user1;
         this.username = username;
-        System.out.println(this.album1 + ""+  this.user + ""+   this.username);
+        System.out.println("printing 2 "+this.album1 + ""+  this.user + ""+   this.username);
 
 
        //setup scrollpane
@@ -358,13 +358,13 @@ import java.util.Optional;
             stg.setTitle("SlideShow View");
             stg.setResizable(false);
             SlideShowController ctrl = slideLoader.getController();
-            ctrl.getAlbum(album1);
+            ctrl.getAlbum(album1,user,username);
             stg.setScene(scene);
             stg.show();
             Stage closes = (Stage) logoutButtton.getScene().getWindow();
             closes.close();
-        }
-        else
+       }
+       else
         {
             Alert nopics = new Alert(AlertType.ERROR);
             nopics.setTitle("Empty Album");
