@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 
 import java.io.IOException;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
 
 
 
@@ -39,12 +41,17 @@ public class UserController{
   @FXML  private Button addTagButton;
    @FXML private Button deletetagButton;
    @FXML private ListView<Album> albumListview;
-   @FXML private ListView<Tag> tagListview;
-   @FXML private TextField albumName;
 
+   @FXML private TextField albumName;
+   @FXML private TextField tagName;
+    @FXML private TextField tagValue;
+
+    @FXML private ListView<Tag> searchTagList;
+    private ObservableList<Tag> tagList;
+    private  ArrayList<Tag> tags;
 
    private ObservableList<Album> albumobs;
-   private ObservableList<Tag> tagobs;
+   ;
    private ArrayList<Album> albumList;
    private List<String> albumNameList;
     private String userin;
@@ -121,6 +128,81 @@ public void getuser(String username){
        // System.out.println("list = "+albumList);
         albumobs = FXCollections.observableList(albumList);
         albumListview.setItems(albumobs);
+    tags = new ArrayList<Tag>();
+    tagList = FXCollections.observableArrayList(tags);
+
+
+    searchTagList.setItems(tagList);
+
+    searchTagList.setCellFactory(new Callback<ListView<Tag>, ListCell<Tag>>() {
+        public ListCell<Tag> call(ListView<Tag> param) {
+            final ListCell<Tag> cell = new ListCell<Tag>() {
+                @Override
+                public void updateItem(Tag tag, boolean empty) {
+
+                    super.updateItem(tag, empty);
+                    if (tag == null) {
+                        setText(null);
+                    }else {
+                        setText(tag.getName() + ": " + tag.getValue());
+                    }
+                }
+            };
+            return cell;
+        }
+    });
+
+
+//Determines if input file is empty, if not, selects first item
+    if(!albumobs.isEmpty()) {
+        albumListview.getSelectionModel().select(0);
+        displayItem();
+    }
+    // set listener for the items
+    albumListview
+            .getSelectionModel()
+            .selectedItemProperty()
+            .addListener((obs, oldVal, newVal) -> displayItem());
+
+    tags = new ArrayList<Tag>();
+    tagList = FXCollections.observableArrayList(tags);
+
+
+    searchTagList.setItems(tagList);
+
+    searchTagList.setCellFactory(new Callback<ListView<Tag>, ListCell<Tag>>() {
+        public ListCell<Tag> call(ListView<Tag> param) {
+            final ListCell<Tag> cell = new ListCell<Tag>() {
+                @Override
+                public void updateItem(Tag tag, boolean empty) {
+
+                    super.updateItem(tag, empty);
+                    if (tag == null) {
+                        setText(null);
+                    }else {
+                        setText(tag.getName() + ": " + tag.getName());
+                    }
+                }
+            };
+            return cell;
+        }
+    });
+
+
+
+    //Determines if input file is empty, if not, selects first item
+    if(!tagList.isEmpty()) {
+        searchTagList.getSelectionModel().select(0);
+        displayItem();
+    }
+    // set listener for the items
+    searchTagList
+            .getSelectionModel()
+            .selectedItemProperty()
+            .addListener((obs, oldVal, newVal) -> displayItem());
+
+
+
 
 
 
@@ -154,7 +236,7 @@ public void getuser(String username){
 
 
    //********************NEED TO IMPLEMENT************
-   public void serach(){
+   public void search(){
         //search photos using tags or dates
    }
 
@@ -231,7 +313,7 @@ public void getuser(String username){
        }
        else{}
    }
-   public void openAlbum() throws IOException {
+   public void openAlbum() throws IOException, ClassNotFoundException {
         //got to another view called photoOpenAlbum.fxml
 
         int index = albumListview.getSelectionModel().getSelectedIndex();
@@ -242,7 +324,8 @@ public void getuser(String username){
        Stage openStage = new Stage();
        openStage.setScene(scene);
        AlbumViewController ctrl = openloader.getController();
-       ctrl.getAlbum(send,userin);
+
+       ctrl.set_user_album(send,currentUser,userin);
        openStage.setTitle("Album view");
        openStage.setResizable(false);
         stage = (Stage) openAlbumButton.getScene().getWindow();
@@ -251,6 +334,51 @@ public void getuser(String username){
 
    }
 
+   public void addTags(){
+       String value = tagValue.getText();
+       String name = tagName.getText();
+       Tag addedTag = new Tag(name, value);
+       for(int i = 0; i < tagList.size(); i++) {
+           if(tagList.get(i).getName().equals(name) && tagList.get(i).getValue().equals(value)) {
+               Alert alert = new Alert(Alert.AlertType.ERROR);
+               alert.setTitle("Error Dialog");
+               alert.setHeaderText("Improper Input");
+               alert.setContentText("This tag already exists in the tag library, input new Tag");
+               alert.showAndWait();
+               tagName.setText("");
+               tagValue.setText("");
+               return;
+           }
+       }
+
+
+       if(value.equals("") || name.equals("")) {
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+           alert.setTitle("Error Dialog");
+           alert.setHeaderText("Improper Input");
+           alert.setContentText("Cannot add blank tag!");
+           alert.showAndWait();
+           tagName.setText("");
+           tagValue.setText("");
+           return;
+       }else{
+           tagList.add(addedTag);
+           searchTagList.getSelectionModel().select(tagList.size());
+           tagName.setText("");
+           tagValue.setText("");
+       }
+
+
+   }
+    private void displayItem() {
+
+        if(albumListview.getSelectionModel().getSelectedItem()!=null) {
+            Album selected = albumListview.getSelectionModel().getSelectedItem();
+
+        }else {
+            return;
+        }
+    }
 
 
 }
