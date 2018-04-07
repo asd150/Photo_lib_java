@@ -238,6 +238,8 @@ public void getuser(String username){
    //********************NEED TO IMPLEMENT************
    public void search(){
         //search photos using tags or dates
+
+
    }
 
    public void create() throws IOException, ClassNotFoundException {
@@ -335,6 +337,7 @@ public void getuser(String username){
    }
 
    public void addTags(){
+
        String value = tagValue.getText();
        String name = tagName.getText();
        Tag addedTag = new Tag(name, value);
@@ -347,6 +350,7 @@ public void getuser(String username){
                alert.showAndWait();
                tagName.setText("");
                tagValue.setText("");
+
                return;
            }
        }

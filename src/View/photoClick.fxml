@@ -8,27 +8,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane fx:controller="controller.photoClickController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.photoClickController">
    <children>
-      <Button layoutX="95.0" layoutY="14.0" mnemonicParsing="false" text="Logout" />
-      <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Quit" />
-      <Button layoutX="167.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Back" />
-      <ImageView fitHeight="179.0" fitWidth="252.0" layoutX="22.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="331.0" layoutY="27.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Caption" />
-      <Button layoutX="331.0" layoutY="143.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="69.0" text="Copy" />
-      <Text layoutX="21.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caption:" wrappingWidth="74.15549755096436" />
-      <Text layoutX="160.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Added:" />
+      <Button fx:id="logoutButton" layoutX="95.0" layoutY="14.0" mnemonicParsing="false" text="Logout" />
+      <Button fx:id="quitButton" layoutX="21.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Quit" />
+      <Button fx:id="backButton" layoutX="167.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Back" />
+      <ImageView fx:id="imageViewer" fitHeight="179.0" fitWidth="252.0" layoutX="22.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="captionButton" layoutX="331.0" layoutY="27.0" mnemonicParsing="false" onAction="#caption" prefHeight="26.0" prefWidth="113.0" text="Caption" />
+      <Button fx:id="copyButton" layoutX="331.0" layoutY="143.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="69.0" text="Copy" />
+      <Text fx:id="captionLabel" layoutX="21.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caption:" wrappingWidth="74.15549755096436" />
+      <Text fx:id="dateLabel" layoutX="160.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Added:" />
       <Separator layoutX="294.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="17.0" />
-      <TextField layoutX="331.0" layoutY="67.0" promptText="Enter Caption" />
-      <TextField layoutX="331.0" layoutY="187.0" promptText="Enter Album Name" />
-      <TextField layoutX="332.0" layoutY="291.0" promptText="Enter Tag" />
-      <Button layoutX="413.0" layoutY="143.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="69.0" text="Move" />
-      <TextField layoutX="332.0" layoutY="329.0" promptText="Enter Tag Value" />
-      <Button layoutX="331.0" layoutY="252.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="69.0" text="Add Tag" />
-      <Button layoutX="414.0" layoutY="252.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Delete Tag" />
+      <TextField fx:id="captionArea" layoutX="331.0" layoutY="67.0" promptText="Enter Caption" />
+      <TextField fx:id="albumArea" layoutX="331.0" layoutY="187.0" promptText="Enter Album Name" />
+      <TextField fx:id="tagArea" layoutX="332.0" layoutY="291.0" promptText="Enter Tag" />
+      <Button fx:id="moveButton" layoutX="413.0" layoutY="143.0" mnemonicParsing="false" onAction="#move" prefHeight="26.0" prefWidth="69.0" text="Move" />
+      <TextField fx:id="tagValArea" layoutX="332.0" layoutY="329.0" promptText="Enter Tag Value" />
+      <Button fx:id="addButton" layoutX="331.0" layoutY="252.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="69.0" text="Add Tag" />
+      <Button fx:id="deleteButton" layoutX="414.0" layoutY="252.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Delete Tag" />
       <Separator layoutX="300.0" layoutY="121.0" prefHeight="0.0" prefWidth="299.0" />
       <Separator layoutX="300.0" layoutY="234.0" prefHeight="3.0" prefWidth="299.0" />
-      <ListView layoutX="25.0" layoutY="268.0" prefHeight="99.0" prefWidth="252.0" />
+      <ListView fx:id="listView" layoutX="25.0" layoutY="268.0" prefHeight="99.0" prefWidth="252.0" />
    </children>
 </AnchorPane>

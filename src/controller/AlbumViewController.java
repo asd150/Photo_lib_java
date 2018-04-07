@@ -150,25 +150,55 @@ import java.util.Optional;
 
                if(event.getButton().equals(MouseButton.PRIMARY)){
                    if(event.getClickCount()==2){
-                            System.out.println("Double clicked");
-                       FXMLLoader clickloader = new FXMLLoader(getClass().getResource("/View/photoClick.fxml"));
-                       Parent root = null;
+                       user.getAlbums().add(album1);
+                       users.getUsers().add(user);
                        try {
-                           root = (Parent) clickloader.load();
+                           AlbumUsers.writeUsers(users);
                        } catch (IOException e) {
+                           e.printStackTrace();
+                       } catch (ClassNotFoundException e) {
                            e.printStackTrace();
                        }
 
-                       Scene scene = new Scene(root);
-                       Stage clickStage = new Stage();
-                       clickStage.setScene(scene);
-                       photoClickController ctrl = clickloader.getController();
-                       ctrl.getUser(user,album1);
-                       clickStage.setTitle("Photo View");
-                       clickStage.show();
-                       Stage stage = (Stage) quitButton.getScene().getWindow();
-                       stage.close();
+                       imageView = new ImageView();
+                       Image image = null;
+                       try {
+                           image = new Image(new FileInputStream(file), 400, 0, true, true);
+                       } catch (FileNotFoundException e) {
+                           e.printStackTrace();
+                       }
+                       imageView.setImage(image);
+                       imageView.setFitWidth(400);
 
+                       imageView.setStyle("-fx-background-color: BLACK");
+
+                       imageView.setPreserveRatio(true);
+                       imageView.setSmooth(true);
+                       imageView.setCache(true);
+                       FXMLLoader photoViewLoader = new FXMLLoader(getClass().getResource("/View/photoClick.fxml"));
+                       Parent root = null;
+                       try {
+                           root = (Parent)photoViewLoader.load();
+                       } catch (IOException e) {
+                           e.printStackTrace();
+                       }
+                       Scene photoScene = new Scene(root);
+                       Stage photoStage = new Stage();
+                       photoStage.setScene(photoScene);
+                       photoStage.setResizable(false);
+                       photoStage.setTitle("Photo Window");
+                       photoClickController cntrl = photoViewLoader.getController();
+                       cntrl.set_user_album(album1,user, false);
+                       try {
+                           cntrl.set_stage(photoStage, imageView, file);
+                       } catch (IOException e) {
+                           e.printStackTrace();
+                       } catch (ClassNotFoundException e) {
+                           e.printStackTrace();
+                       }
+                       Stage stagess = (Stage)photoCollection.getScene().getWindow();
+                       stagess.close();
+                       photoStage.show();
 
                    }
                    else if(event.getClickCount()==1){

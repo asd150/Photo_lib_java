@@ -79,8 +79,9 @@ public class SlideShowController {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("Login Page");
-        stage.show();
-
+            stage.show();
+          Stage oo = (Stage)  quitButton.getScene().getWindow();
+            oo.close();
 
     }
     public void back() throws IOException, ClassNotFoundException {
