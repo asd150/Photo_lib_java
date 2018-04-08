@@ -24,10 +24,10 @@
       <TextField fx:id="tagArea" layoutX="332.0" layoutY="291.0" promptText="Enter Tag" />
       <Button fx:id="moveButton" layoutX="413.0" layoutY="143.0" mnemonicParsing="false" onAction="#move" prefHeight="26.0" prefWidth="69.0" text="Move" />
       <TextField fx:id="tagValArea" layoutX="332.0" layoutY="329.0" promptText="Enter Tag Value" />
-      <Button fx:id="addButton" layoutX="331.0" layoutY="252.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="69.0" text="Add Tag" />
-      <Button fx:id="deleteButton" layoutX="414.0" layoutY="252.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Delete Tag" />
+      <Button fx:id="addButton" layoutX="331.0" layoutY="252.0" mnemonicParsing="false" onAction="#addTag" prefHeight="26.0" prefWidth="69.0" text="Add Tag" />
+      <Button fx:id="deleteButton" layoutX="414.0" layoutY="252.0" mnemonicParsing="false" onAction="#deletetag" prefHeight="26.0" prefWidth="82.0" text="Delete Tag" />
       <Separator layoutX="300.0" layoutY="121.0" prefHeight="0.0" prefWidth="299.0" />
       <Separator layoutX="300.0" layoutY="234.0" prefHeight="3.0" prefWidth="299.0" />
-      <ListView fx:id="listView" layoutX="25.0" layoutY="268.0" prefHeight="99.0" prefWidth="252.0" />
+      <ListView fx:id="searchTagList" layoutX="25.0" layoutY="268.0" prefHeight="99.0" prefWidth="252.0" />
    </children>
 </AnchorPane>

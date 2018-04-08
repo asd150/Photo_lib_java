@@ -68,12 +68,17 @@ import java.util.Optional;
 
         @FXML
         private Label earliestDate, latestDate, albumSize;
-
+        private  Stage curStage;
+    public void setStage(Stage stage){
+            this.curStage = stage;
+    }
     public void set_user_album(Album album, User user1, String username) throws IOException, ClassNotFoundException {
         this.album1 = album;
         this.user = user1;
         this.username = username;
-        System.out.println("printing 2 "+this.album1 + ""+  this.user + ""+   this.username);
+        //System.out.println("printing 2++++++++++++++ "+this.album1 + ""+  this.user + ""+   this.username);
+
+       // System.out.println("ALBUM SIZE "+this.album1.getListofphotos().size());
 
 
        //setup scrollpane
@@ -88,7 +93,8 @@ import java.util.Optional;
         photoCollection.setPrefColumns(1);
 
         users = AlbumUsers.readUsers();
-       // System.out.println("1 "+users.getUsers());
+
+        System.out.println("AlbumviewControllers users  "+users.getUsers());
        // System.out.println("4 " + user.getAlbums());
             userList = users.getUsers();
 
@@ -261,7 +267,7 @@ import java.util.Optional;
         stage.setResizable(false);
         stage.setScene(scene);
         UserController ctrl = backLoader.getController();
-        ctrl.getuser(username);
+        ctrl.getuser(username,curStage);
 
         stage.show();
 

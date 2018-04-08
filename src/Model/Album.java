@@ -51,9 +51,11 @@ public class Album implements Serializable {
     public void addPhoto(Photos photos){
         this.listofphotos.add(photos);
         sizes++;
-        sorter();
-        this.set_early(this.listofphotos.get(0));
 
+
+            sorter();
+
+        this.set_early(this.listofphotos.get(0));
         this.set_old(this.listofphotos.get(this.sizes-1));
     }
 

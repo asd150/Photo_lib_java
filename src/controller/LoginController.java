@@ -33,6 +33,7 @@ public class LoginController implements Initializable {
     private String UserName;
     private Stage stage;
     private AlbumUsers albumUsers;
+    private Stage curStage;
 
 
 
@@ -104,7 +105,7 @@ public class LoginController implements Initializable {
                    Stage userStage = new Stage();
                    //System.out.println("userexist = "+UserName);
                    UserController ctrl = userloader.getController();
-                   ctrl.getuser(UserName);
+                   ctrl.getuser(UserName,userStage);
 
                    userStage.setResizable(false);
                    userStage.setTitle("User View");
@@ -138,7 +139,7 @@ public class LoginController implements Initializable {
                    Scene scene = new Scene(root);
                    Stage newStage = new Stage();
                    UserController ctrl = newuserloader.getController();
-                   ctrl.getuser(UserName);
+                   ctrl.getuser(UserName,newStage);
 
                    newStage.setScene(scene);
                    newStage.setTitle("User View");
