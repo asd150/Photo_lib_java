@@ -1,9 +1,6 @@
 package controller;
 
-import Model.Album;
-import Model.AlbumUsers;
-import Model.Tag;
-import Model.User;
+import Model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,12 +15,11 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
-
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.*;
 
 
 public class UserController{
@@ -241,17 +237,110 @@ private Stage curStage;
 
 
     //********************NEED TO IMPLEMENT************
-    public void search(){
+    public void search() throws ParseException, IOException {
         //search photos using tags or dates
+        List<Photos> search = new ArrayList<>();
+        Album albumResult = new Album();
 
         //get the input from date
         //get input from tag
 
+        if((earlyDate.getValue()!=null && latestDate.getValue()!=null) && (tagName.getText()==null && tagValue.getText()==null) ) {
+            System.out.println("dates are not null");
+
+            for (int i = 0; i < currentUser.getAlbums().size(); i++) {
+                for (int j = 0; j < currentUser.getAlbums().get(i).getListofphotos().size(); j++) {
+                    LocalDate d = currentUser.getAlbums().get(i).getListofphotos().get(j).getDate_time().getTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                    if((earlyDate.getValue().isBefore(d) && latestDate.getValue().isAfter(d)) || (earlyDate.getValue().equals(d) && latestDate.getValue().equals(d))){
+                       // System.out.println(currentUser.getAlbums().get(i).getListofphotos().get(j).getPhotoFile());
+
+                        search.add(currentUser.getAlbums().get(i).getListofphotos().get(j));
+
+                            albumResult.addPhoto(currentUser.getAlbums().get(i).getListofphotos().get(j));
+
+
+                    }
+
+                }
+            }
+           System.out.println(search.size());
+            System.out.println(albumResult.getListofphotos() );
+
+
+        }
+        else if((earlyDate.getValue()==null && latestDate.getValue()==null) && (tagName.getText()!=null && tagValue.getText()!=null)){
+            System.out.println("search using tags");
+            int index = searchTagList.getSelectionModel().getSelectedIndex();
+           Tag tg  = tagList.get(index);
+
+            System.out.println(tg.getName() + "" +  tg.getValue());
+
+
+
+
+            for (int i = 0; i < currentUser.getAlbums().size(); i++) {
+                for (int j = 0; j < currentUser.getAlbums().get(i).getListofphotos().size(); j++) {
+
+
+
+                        if(currentUser.getAlbums().get(i).getListofphotos().get(j).tagexist(tg)){
+                            if(search.size()==0) {
+                                search.add(currentUser.getAlbums().get(i).getListofphotos().get(j));
+                            }
+                            else
+                            {
+
+                                if(search.contains(currentUser.getAlbums().get(i).getListofphotos().get(j))){
+
+                                }
+                                else
+                                {
+                                    search.add(currentUser.getAlbums().get(i).getListofphotos().get(j));
+                                }
+                            }
+                        }
 
 
 
 
 
+
+
+
+
+
+
+                }
+            }
+            System.out.println(search);//DONE1
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/SearchResult.fxml"));
+            Parent root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            Stage stagea = new Stage();
+            stagea.setTitle("Search Results");
+            stagea.setScene(scene);
+            stagea.setResizable(false);
+            stagea.show();
+
+
+
+
+
+
+
+
+
+
+        }
+        else
+        {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.setTitle("Error!");
+            error.setContentText("Search using date Range OR Tags");
+            error.showAndWait();
+            tagValue.setText("");
+            tagName.setText("");
+        }
     }
 
     public void create() throws IOException, ClassNotFoundException {
