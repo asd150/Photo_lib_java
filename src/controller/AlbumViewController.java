@@ -88,8 +88,8 @@ import java.util.Optional;
         photoCollection.setPrefColumns(1);
 
         users = AlbumUsers.readUsers();
-        System.out.println("1 "+users.getUsers());
-        System.out.println("4 " + user.getAlbums());
+       // System.out.println("1 "+users.getUsers());
+       // System.out.println("4 " + user.getAlbums());
             userList = users.getUsers();
 
         for(int i = 0;i< userList.size();i++){
@@ -101,6 +101,7 @@ import java.util.Optional;
         }
 
         albums = user.getAlbums();
+      //  System.out.println("recieved album " + album1);
         for(int i = 0;i<albums.size();i++){
             if(albums.get(i).getAlbumName().trim().equals(album.getAlbumName())){
                 album1 = albums.get(i);
@@ -188,7 +189,13 @@ import java.util.Optional;
                        photoStage.setResizable(false);
                        photoStage.setTitle("Photo Window");
                        photoClickController cntrl = photoViewLoader.getController();
-                       cntrl.set_user_album(album1,user, false);
+                       try {
+                           cntrl.set_user_album(album1,user, false);
+                       } catch (IOException e) {
+                           e.printStackTrace();
+                       } catch (ClassNotFoundException e) {
+                           e.printStackTrace();
+                       }
                        try {
                            cntrl.set_stage(photoStage, imageView, file);
                        } catch (IOException e) {
@@ -373,13 +380,14 @@ import java.util.Optional;
         stage.close();
     }
     public void slideshow() throws IOException, ClassNotFoundException {
-        user.getAlbums().add(album1);
-        users.getUsers().add(user);
-        AlbumUsers.writeUsers(users);
+
 
         if(album1.getListofphotos().size()>0) {
 
             //send the album
+            user.getAlbums().add(album1);
+            users.getUsers().add(user);
+            AlbumUsers.writeUsers(users);
 
             FXMLLoader slideLoader = new FXMLLoader(getClass().getResource("/View/photoSlideShow.fxml"));
             Parent root = (Parent) slideLoader.load();

@@ -318,8 +318,10 @@ public void getuser(String username){
    public void openAlbum() throws IOException, ClassNotFoundException {
         //got to another view called photoOpenAlbum.fxml
 
-        int index = albumListview.getSelectionModel().getSelectedIndex();
-        send = albumList.get(index);
+     Album a = albumListview.getSelectionModel().getSelectedItem();
+     System.out.println("album name  "+a.getAlbumName());
+
+
        FXMLLoader openloader = new FXMLLoader(getClass().getResource("/View/photoOpenAlbum.fxml"));
        Parent root = (Parent) openloader.load();
        Scene scene = new Scene(root);
@@ -327,7 +329,7 @@ public void getuser(String username){
        openStage.setScene(scene);
        AlbumViewController ctrl = openloader.getController();
 
-       ctrl.set_user_album(send,currentUser,userin);
+       ctrl.set_user_album(a,currentUser,userin);
        openStage.setTitle("Album view");
        openStage.setResizable(false);
         stage = (Stage) openAlbumButton.getScene().getWindow();

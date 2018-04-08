@@ -10,12 +10,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.photoClickController">
    <children>
-      <Button fx:id="logoutButton" layoutX="95.0" layoutY="14.0" mnemonicParsing="false" text="Logout" />
-      <Button fx:id="quitButton" layoutX="21.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Quit" />
-      <Button fx:id="backButton" layoutX="167.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Back" />
+      <Button fx:id="logoutButton" layoutX="95.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOut" text="Logout" />
+      <Button fx:id="quitButton" layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#quit" prefHeight="26.0" prefWidth="60.0" text="Quit" />
+      <Button fx:id="backButton" layoutX="167.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="60.0" text="Back" />
       <ImageView fx:id="imageViewer" fitHeight="179.0" fitWidth="252.0" layoutX="22.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="captionButton" layoutX="331.0" layoutY="27.0" mnemonicParsing="false" onAction="#caption" prefHeight="26.0" prefWidth="113.0" text="Caption" />
-      <Button fx:id="copyButton" layoutX="331.0" layoutY="143.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="69.0" text="Copy" />
+      <Button fx:id="copyButton" layoutX="331.0" layoutY="143.0" mnemonicParsing="false" onAction="#copy" prefHeight="26.0" prefWidth="69.0" text="Copy" />
       <Text fx:id="captionLabel" layoutX="21.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caption:" wrappingWidth="74.15549755096436" />
       <Text fx:id="dateLabel" layoutX="160.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Added:" />
       <Separator layoutX="294.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="17.0" />
