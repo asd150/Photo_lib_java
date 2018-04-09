@@ -245,8 +245,8 @@ private Stage curStage;
         //get the input from date
         //get input from tag
 
-        if((earlyDate.getValue()!=null && latestDate.getValue()!=null) && (tagName.getText()==null && tagValue.getText()==null) ) {
-            System.out.println("dates are not null");
+        if((earlyDate.getValue()!=null && latestDate.getValue()!=null) && (tagName.getText().isEmpty() && tagValue.getText().isEmpty()) ) {
+
 
             for (int i = 0; i < currentUser.getAlbums().size(); i++) {
                 for (int j = 0; j < currentUser.getAlbums().get(i).getListofphotos().size(); j++) {
