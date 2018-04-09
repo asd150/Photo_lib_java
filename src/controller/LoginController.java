@@ -123,30 +123,34 @@ public class LoginController implements Initializable {
 
                System.out.println("User not exists");
                System.out.println("Answer = "+albumUsers.UsernameTaken(UserName));
-               if(albumUsers.UsernameTaken(UserName)){
-                   Alert sameInput = new Alert(Alert.AlertType.ERROR);
-                   sameInput.setTitle("Enter Different UserName");
-                   sameInput.showAndWait();
-
-               }
-               else
-               {
-                   User newUser = new User(UserName);
-                   albumUsers.addUsers(newUser);
-                   AlbumUsers.writeUsers(albumUsers);
-                   FXMLLoader newuserloader = new FXMLLoader(getClass().getResource("/View/photoUser.fxml"));
-                   Parent root = (Parent) newuserloader.load();
-                   Scene scene = new Scene(root);
-                   Stage newStage = new Stage();
-                   UserController ctrl = newuserloader.getController();
-                   ctrl.getuser(UserName,newStage);
-
-                   newStage.setScene(scene);
-                   newStage.setTitle("User View");
-                   newStage.show();
-                   stage = (Stage) usernamelogin.getScene().getWindow();
-                   stage.close();
-               }
+               Alert usernotexist = new Alert(Alert.AlertType.ERROR);
+               usernotexist.setContentText("User Does not Exist");
+               usernotexist.showAndWait();
+               usernotexist.setTitle("ERROR!");
+//               if(albumUsers.UsernameTaken(UserName)){
+//                   Alert sameInput = new Alert(Alert.AlertType.ERROR);
+//                   sameInput.setTitle("Enter Different UserName");
+//                   sameInput.showAndWait();
+//
+//               }
+//               else
+//               {
+//                   User newUser = new User(UserName);
+//                   albumUsers.addUsers(newUser);
+//                   AlbumUsers.writeUsers(albumUsers);
+//                   FXMLLoader newuserloader = new FXMLLoader(getClass().getResource("/View/photoUser.fxml"));
+//                   Parent root = (Parent) newuserloader.load();
+//                   Scene scene = new Scene(root);
+//                   Stage newStage = new Stage();
+//                   UserController ctrl = newuserloader.getController();
+//                   ctrl.getuser(UserName,newStage);
+//
+//                   newStage.setScene(scene);
+//                   newStage.setTitle("User View");
+//                   newStage.show();
+//                   stage = (Stage) usernamelogin.getScene().getWindow();
+//                   stage.close();
+//               }
 
            }
        }

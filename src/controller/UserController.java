@@ -237,7 +237,7 @@ private Stage curStage;
 
 
     //********************NEED TO IMPLEMENT************
-    public void search() throws ParseException, IOException {
+    public void search() throws ParseException, IOException, ClassNotFoundException {
         //search photos using tags or dates
         List<Photos> search = new ArrayList<>();
         Album albumResult = new Album();
@@ -300,16 +300,6 @@ private Stage curStage;
                             }
                         }
 
-
-
-
-
-
-
-
-
-
-
                 }
             }
             System.out.println(search);//DONE1
@@ -321,16 +311,10 @@ private Stage curStage;
             stagea.setScene(scene);
             stagea.setResizable(false);
             stagea.show();
-
-
-
-
-
-
-
-
-
-
+            SearchController ctrl = loader.getController();
+            ctrl.getData(search,currentUser);
+            Stage stg = (Stage) logoutButton.getScene().getWindow();
+            stg.close();
         }
         else
         {
@@ -418,10 +402,6 @@ private Stage curStage;
     }
     public void openAlbum() throws IOException, ClassNotFoundException {
         //got to another view called photoOpenAlbum.fxml
-
-
-
-
 
         if(albumListview.getSelectionModel().getSelectedItem() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
