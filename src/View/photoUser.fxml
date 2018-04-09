@@ -31,7 +31,7 @@
       <TextField fx:id="tagName" layoutX="14.0" layoutY="174.0" prefHeight="26.0" prefWidth="126.0" promptText="Tag Name" />
       <TextField fx:id="tagValue" layoutX="157.0" layoutY="174.0" prefHeight="26.0" prefWidth="126.0" promptText="Tag Value" />
       <Button fx:id="addTagButton" layoutX="14.0" layoutY="207.0" mnemonicParsing="false" onAction="#addTags" prefHeight="26.0" prefWidth="126.0" text="Add Tag" />
-      <Button fx:id="deletetagButton" layoutX="157.0" layoutY="207.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" text="Delete Tag" />
+      <Button fx:id="deletetagButton" layoutX="157.0" layoutY="207.0" mnemonicParsing="false" onAction="#deleteTag" prefHeight="26.0" prefWidth="126.0" text="Delete Tag" />
       <Button layoutX="156.0" layoutY="12.0" mnemonicParsing="false" onAction="#search" prefHeight="62.0" prefWidth="94.0" text="Search" />
    </children>
 </AnchorPane>

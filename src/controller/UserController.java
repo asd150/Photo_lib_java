@@ -86,11 +86,7 @@ public class UserController{
 //    }
 
 
-    /********************************************************************************                                                                             *
-     * implement the code in rename() which prevent the user to enter duplicate names *
-     * also implement the code in create() which prevent duplicate names
-     *    Also implement Tags button *
-     * ******************************************************************************/
+
 
 private Stage curStage;
 
@@ -129,29 +125,29 @@ private Stage curStage;
         // System.out.println("list = "+albumList);
         albumobs = FXCollections.observableList(albumList);
         albumListview.setItems(albumobs);
-        tags = new ArrayList<Tag>();
-        tagList = FXCollections.observableArrayList(tags);
-
-
-        searchTagList.setItems(tagList);
-
-        searchTagList.setCellFactory(new Callback<ListView<Tag>, ListCell<Tag>>() {
-            public ListCell<Tag> call(ListView<Tag> param) {
-                final ListCell<Tag> cell = new ListCell<Tag>() {
-                    @Override
-                    public void updateItem(Tag tag, boolean empty) {
-
-                        super.updateItem(tag, empty);
-                        if (tag == null) {
-                            setText(null);
-                        }else {
-                            setText(tag.getName() + ": " + tag.getValue());
-                        }
-                    }
-                };
-                return cell;
-            }
-        });
+//        tags = new ArrayList<Tag>();
+//        tagList = FXCollections.observableArrayList(tags);
+//
+//
+//        searchTagList.setItems(tagList);
+//
+//        searchTagList.setCellFactory(new Callback<ListView<Tag>, ListCell<Tag>>() {
+//            public ListCell<Tag> call(ListView<Tag> param) {
+//                final ListCell<Tag> cell = new ListCell<Tag>() {
+//                    @Override
+//                    public void updateItem(Tag tag, boolean empty) {
+//
+//                        super.updateItem(tag, empty);
+//                        if (tag == null) {
+//                            setText(null);
+//                        }else {
+//                            setText(tag.getName() + ": " + tag.getValue());
+//                        }
+//                    }
+//                };
+//                return cell;
+//            }
+//        });
 
 
 //Determines if input file is empty, if not, selects first item
@@ -181,7 +177,7 @@ private Stage curStage;
                         if (tag == null) {
                             setText(null);
                         }else {
-                            setText(tag.getName() + ": " + tag.getName());
+                            setText(tag.getName() + ": " + tag.getValue());
                         }
                     }
                 };
@@ -236,7 +232,7 @@ private Stage curStage;
 
 
 
-    //********************NEED TO IMPLEMENT************
+
     public void search() throws ParseException, IOException, ClassNotFoundException {
         //search photos using tags or dates
         List<Photos> search = new ArrayList<>();
@@ -493,6 +489,8 @@ private Stage curStage;
             tagValue.setText("");
             return;
         }else{
+            System.out.println(addedTag.getName());
+            System.out.println(addedTag.getValue());
             tagList.add(addedTag);
             searchTagList.getSelectionModel().select(tagList.size());
             tagName.setText("");
@@ -501,6 +499,26 @@ private Stage curStage;
 
 
     }
+
+    public void deleteTag(){
+
+        Alert delerror = new Alert(Alert.AlertType.CONFIRMATION);
+        delerror.setTitle("Delete Tag?");
+
+        delerror.setContentText("Are you sure?");
+
+        Optional<ButtonType> result = delerror.showAndWait();
+        if(result.get() == ButtonType.OK) {
+
+            int index = searchTagList.getSelectionModel().getSelectedIndex();
+            System.out.println(tagList.get(index));
+            tagList.remove(index);
+
+        }
+
+
+    }
+
     private void displayItem() {
 
         if(albumListview.getSelectionModel().getSelectedItem()!=null) {
