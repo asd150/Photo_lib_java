@@ -265,7 +265,18 @@ private Stage curStage;
             }
            System.out.println(search.size());
             System.out.println(albumResult.getListofphotos() );
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/SearchResult.fxml"));
+            Parent root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            Stage stagea = new Stage();
+            stagea.setTitle("Search Results");
+            stagea.setScene(scene);
+            stagea.setResizable(false);
+            stagea.show();
+            SearchController ctrl = loader.getController();
+            ctrl.getData(search,currentUser);
+            Stage stg = (Stage) logoutButton.getScene().getWindow();
+            stg.close();
 
         }
         else if((earlyDate.getValue()==null && latestDate.getValue()==null) && (tagName.getText()!=null && tagValue.getText()!=null)){
@@ -302,7 +313,7 @@ private Stage curStage;
 
                 }
             }
-            System.out.println(search);//DONE1
+          //  System.out.println(search);//DONE1
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/SearchResult.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
