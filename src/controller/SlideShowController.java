@@ -37,6 +37,13 @@ public class SlideShowController {
     @FXML private AnchorPane anchorPane;
     @FXML private Button quitButton;
 
+    /**
+     *
+     * @param album
+     * @param user1
+     * @param username
+     * @throws FileNotFoundException
+     */
     public void getAlbum(Album album, User user1, String username) throws FileNotFoundException {
         this.albumrec = album;
         this.user = user1;
@@ -48,6 +55,10 @@ public class SlideShowController {
         firstSetup=false;
         }
 
+    /**
+     *
+     * @throws FileNotFoundException
+     */
     public void next() throws FileNotFoundException {
 
 
@@ -59,6 +70,11 @@ public class SlideShowController {
       System.out.println("image "+image);
 
     }
+
+    /**
+     *
+     * @throws FileNotFoundException
+     */
     public void previous() throws FileNotFoundException {
 
         Photos p = albumrec.prevPhoto(currentpic);
@@ -67,10 +83,19 @@ public class SlideShowController {
         view.setImage(image);
 
     }
+
+    /**
+     *
+     */
     public void quit(){
        Stage stage = (Stage) quitButton.getScene().getWindow();
         stage.close();
         }
+
+    /**
+     *
+     * @throws IOException
+     */
     public void logOut() throws IOException {
         FXMLLoader logoutloader = new FXMLLoader(getClass().getResource("/View/photoLogin.fxml"));
         Parent root = (Parent) logoutloader.load();
@@ -84,6 +109,12 @@ public class SlideShowController {
             oo.close();
 
     }
+
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void back() throws IOException, ClassNotFoundException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/photoOpenAlbum.fxml"));

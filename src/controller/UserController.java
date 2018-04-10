@@ -90,6 +90,11 @@ public class UserController{
 
 private Stage curStage;
 
+    /**
+     *
+     * @param username
+     * @param stage
+     */
     public void getuser(String username,Stage stage){
 
         this.curStage = stage;
@@ -205,6 +210,10 @@ private Stage curStage;
 
 
     }
+
+    /**
+     *
+     */
     public void quit(){
         //terminate the program
 
@@ -213,6 +222,11 @@ private Stage curStage;
 
 
     }
+
+    /**
+     *
+     * @throws IOException
+     */
     public void logout() throws IOException{
         //go to loginpage
         FXMLLoader logout = new FXMLLoader(getClass().getResource("/View/photoLogin.fxml"));
@@ -231,8 +245,12 @@ private Stage curStage;
     }
 
 
-
-
+    /**
+     *
+     * @throws ParseException
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void search() throws ParseException, IOException, ClassNotFoundException {
         //search photos using tags or dates
         List<Photos> search = new ArrayList<>();
@@ -334,6 +352,12 @@ private Stage curStage;
         }
     }
 
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+
     public void create() throws IOException, ClassNotFoundException {
         //create album
         //add to albumuser
@@ -366,6 +390,12 @@ private Stage curStage;
 //      albumobs = FXCollections.observableList(albumList);
 //      albumListview.setItems(albumobs);
     }
+
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void remove() throws IOException, ClassNotFoundException {
         //remove the album
         Alert removealert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -382,6 +412,12 @@ private Stage curStage;
         }
 
     }
+
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void rename() throws IOException, ClassNotFoundException {
         int index = albumListview.getSelectionModel().getSelectedIndex();
         String oldname =  albumList.get(index).getAlbumName();
@@ -407,6 +443,12 @@ private Stage curStage;
         }
         else{}
     }
+
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void openAlbum() throws IOException, ClassNotFoundException {
         //got to another view called photoOpenAlbum.fxml
 
@@ -459,6 +501,10 @@ private Stage curStage;
         }
     }
 
+    /**
+     *
+     */
+
     public void addTags(){
 
         String value = tagValue.getText();
@@ -500,6 +546,10 @@ private Stage curStage;
 
     }
 
+    /**
+     *
+     */
+
     public void deleteTag(){
 
         Alert delerror = new Alert(Alert.AlertType.CONFIRMATION);
@@ -518,6 +568,10 @@ private Stage curStage;
 
 
     }
+
+    /**
+     *
+     */
 
     private void displayItem() {
 

@@ -36,10 +36,11 @@ public class LoginController implements Initializable {
     private Stage curStage;
 
 
-
-
-
-
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
    @FXML
    private void login() throws IOException, ClassNotFoundException {
         //when login button is pressed
@@ -158,9 +159,10 @@ public class LoginController implements Initializable {
    }
 
 
-
-
-
+    /**
+     *
+     * @throws Exception
+     */
     @FXML
     private void quit() throws Exception{
 
@@ -170,7 +172,11 @@ public class LoginController implements Initializable {
 
     }
 
-
+    /**
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

@@ -64,6 +64,13 @@ public class SearchController {
 
     private boolean createdAlbum = false;
 
+    /**
+     *
+     * @param photosList
+     * @param recUser
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void getData(List<Photos> photosList,User recUser ) throws IOException, ClassNotFoundException {
 
         System.out.println(photosList);
@@ -112,6 +119,14 @@ public class SearchController {
 
 
     }
+
+    /**
+     *
+     * @param imageView
+     * @param caption
+     * @param imageFile
+     * @return
+     */
     private Label create_captioned_image(ImageView imageView, String caption, File imageFile) {
         Label ret = new Label(caption);
         ret.setPadding(new Insets(5, 5, 5, 5));
@@ -124,6 +139,12 @@ public class SearchController {
 
         return ret;
     }
+
+    /**
+     *
+     * @param imageFile
+     * @return
+     */
     private ImageView create_image_view(final File imageFile) {
 
         ImageView imageView = null;
@@ -138,6 +159,11 @@ public class SearchController {
         return imageView;
     }
 
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void createAlbum() throws IOException, ClassNotFoundException {
         System.out.println(CurrentUser.getAlbums());
         boolean notContain =true;
@@ -163,6 +189,10 @@ public class SearchController {
 
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     public void back() throws IOException {
 
         System.out.println(CurrentUser.getUsernname());
@@ -181,7 +211,12 @@ public class SearchController {
 
 
     }
-    public void quit(){
 
+    /**
+     *
+     */
+    public void quit(){
+        Stage stg = (Stage) createButton.getScene().getWindow();
+        stg.close();
     }
 }

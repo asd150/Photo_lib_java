@@ -16,26 +16,45 @@ public class AlbumUsers implements Serializable {
 
     static File file = new File(userListFile);
 
-
+    /**
+     *
+     */
     public AlbumUsers(){
         users = new ArrayList<>();
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<User> getUsers() {
         return users;
     }
+
+    /**
+     *
+     * @param user
+     */
     public void addUsers(User user){
         System.out.println("Album User ="+ user);
         users.add(user);
     }
 
+    /**
+     *
+     * @param user
+     */
     public void removeUsers(User user){
 
         users.remove(user);
     }
 
 
-
+    /**
+     *
+     * @param givenUname
+     * @return
+     */
     public User getUserByUname(String givenUname){
         for (User u : users){
             if(givenUname.trim().equals(u.getUsernname())){
@@ -45,6 +64,11 @@ public class AlbumUsers implements Serializable {
         return null;
     }
 
+    /**
+     *
+     * @param givenUname
+     * @return
+     */
     public boolean UserExists(String givenUname) {
         System.out.println("GivenUName = " + givenUname);
         for (User u : users) {
@@ -56,6 +80,11 @@ public class AlbumUsers implements Serializable {
             return false;
     }
 
+    /**
+     *
+     * @param givenUsername
+     * @return
+     */
     public boolean UsernameTaken(String givenUsername){
         for(User u : users){
             if(givenUsername.trim().equals(u.getUsernname())){
@@ -66,7 +95,12 @@ public class AlbumUsers implements Serializable {
     }
 
 
-
+    /**
+     *
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static AlbumUsers readUsers() throws IOException,ClassNotFoundException{
         AlbumUsers usersavailable = null;
        file.createNewFile();
@@ -77,6 +111,12 @@ public class AlbumUsers implements Serializable {
         return usersavailable;
     }
 
+    /**
+     *
+     * @param albumUsers
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static void writeUsers(AlbumUsers albumUsers) throws IOException,ClassNotFoundException{
         file.createNewFile();
 
@@ -87,6 +127,10 @@ public class AlbumUsers implements Serializable {
         oos.close();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         String userLisr = " ";

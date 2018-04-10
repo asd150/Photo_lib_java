@@ -72,6 +72,16 @@ import java.util.Optional;
     public void setStage(Stage stage){
             this.curStage = stage;
     }
+
+        /**
+         *
+         * @param album
+         * @param user1
+         * @param username
+         * @throws IOException
+         * @throws ClassNotFoundException
+         */
+
     public void set_user_album(Album album, User user1, String username) throws IOException, ClassNotFoundException {
         this.album1 = album;
         this.user = user1;
@@ -140,6 +150,15 @@ import java.util.Optional;
         scrollPane.setContent(photoCollection);
 
     }
+
+        /**
+         *
+         * @param imageView
+         * @param file
+         * @param caption
+         * @return
+         * @throws IOException
+         */
     public Label createImage(ImageView imageView,File file,String caption) throws IOException{
         Label labelView  = new Label(caption);
         labelView.setPadding(new Insets(0));
@@ -243,6 +262,13 @@ import java.util.Optional;
         return labelView;
     }
 
+        /**
+         *
+         * @param file
+         * @return
+         * @throws FileNotFoundException
+         */
+
     public ImageView createImageview(File file) throws FileNotFoundException {
 
         ImageView imageView = null;
@@ -251,6 +277,12 @@ import java.util.Optional;
         imageView.setFitWidth(100);
         return imageView ;
     }
+
+        /**
+         *
+         * @throws IOException
+         * @throws ClassNotFoundException
+         */
 
     public void back() throws IOException, ClassNotFoundException {
         System.out.println("3 "+user.getAlbums());
@@ -276,6 +308,11 @@ import java.util.Optional;
 
 
     }
+
+        /**
+         *
+         * @throws IOException
+         */
     public void add_photo() throws IOException {
 
         FileChooser fileChooser =  new FileChooser();
@@ -319,6 +356,10 @@ import java.util.Optional;
         photoCollection.getChildren().addAll(newLabel);
 
     }
+
+        /**
+         *
+         */
     public void delete_photo() {
         int counter = 0;
 
@@ -362,6 +403,12 @@ import java.util.Optional;
         }
     }
 
+        /**
+         *
+         * @throws IOException
+         * @throws ClassNotFoundException
+         */
+
     public void quit() throws IOException, ClassNotFoundException {
         user.getAlbums().add(album1);
         users.getUsers().add(user);
@@ -369,6 +416,12 @@ import java.util.Optional;
         Stage stage = (Stage) quitButton.getScene().getWindow();
         stage.close();
         }
+
+        /**
+         *
+         * @throws IOException
+         * @throws ClassNotFoundException
+         */
     public void log_out() throws IOException, ClassNotFoundException {
         user.getAlbums().add(album1);
         users.getUsers().add(user);
@@ -385,6 +438,12 @@ import java.util.Optional;
         Stage stage = (Stage) logoutButtton.getScene().getWindow();
         stage.close();
     }
+
+        /**
+         *
+         * @throws IOException
+         * @throws ClassNotFoundException
+         */
     public void slideshow() throws IOException, ClassNotFoundException {
 
 

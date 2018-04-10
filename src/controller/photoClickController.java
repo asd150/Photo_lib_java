@@ -65,10 +65,14 @@ public class photoClickController {
     private Stage thisstage;
 
 
-
-
-
-
+    /**
+     *
+     * @param album
+     * @param user
+     * @param search
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
 
     public void set_user_album(Album album,User user, boolean search) throws IOException, ClassNotFoundException {
           System.out.println("++++++++++++++++++++++++++++++++++++++++++");
@@ -86,6 +90,15 @@ public class photoClickController {
         currentAlbum = album;
         currName = currentUser.getUsernname();
     }
+
+    /**
+     *
+     * @param stage
+     * @param imageView
+     * @param imageFile
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void set_stage(Stage stage, ImageView imageView, File imageFile) throws IOException, ClassNotFoundException {
     thisstage = stage;
         imageViewer.setImage(imageView.getImage());
@@ -171,6 +184,10 @@ public class photoClickController {
 
         }
     }
+
+    /**
+     *
+      */
     private void displayItem() {
 
         if(searchTagList.getSelectionModel().getSelectedItem()!=null) {
@@ -180,6 +197,10 @@ public class photoClickController {
             return;
         }
     }
+
+    /**
+     *
+     */
     public void caption(){
         System.out.println("in back" + albumusers.getUsers());
         System.out.println("captionarea "+captionArea.getText());
@@ -203,6 +224,10 @@ public class photoClickController {
 
 
     }
+
+    /**
+     *
+     */
     public void addTag(){
         String name = tagArea.getText().trim();
         String value = tagValArea.getText().trim();
@@ -240,6 +265,10 @@ public class photoClickController {
             tagArea.setText("");
         }
     }
+
+    /**
+     *
+     */
     public void deletetag(){
         if(searchTagList.getSelectionModel().getSelectedItem() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -281,6 +310,11 @@ public class photoClickController {
 
     }
 
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void move() throws IOException, ClassNotFoundException {
 //            System.out.println("current pic caption" + currentPic.getCaption());
 //            System.out.println("Current pic tags" + currentPic.getTags().size());
@@ -382,6 +416,10 @@ public class photoClickController {
 
     }
 
+    /**
+     *
+     */
+
     public void copy(){
 
 
@@ -461,6 +499,12 @@ public class photoClickController {
         }
 
     }
+
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void back() throws IOException, ClassNotFoundException {
 
         currentAlbum.addPhoto(currentPic);
@@ -486,7 +530,13 @@ public class photoClickController {
         close.close();
 
     }
-public void backmove() throws IOException, ClassNotFoundException {
+
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public void backmove() throws IOException, ClassNotFoundException {
     System.out.println("in back" + albumusers.getUsers());
     albumusers.addUsers(currentUser);
     AlbumUsers.writeUsers(albumusers);
@@ -517,6 +567,10 @@ public void backmove() throws IOException, ClassNotFoundException {
 
 
 }
+
+    /**
+     *
+     */
     public void quit(){
         currentAlbum.addPhoto(currentPic);
         currentUser.addAlbum(currentAlbum);

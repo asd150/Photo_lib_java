@@ -17,28 +17,51 @@ public class Album implements Serializable {
     private Photos early;
 
 
-
+    /**
+     *
+     */
     public Album(){
         listofphotos = new ArrayList<Photos>();
     }
+
+    /**
+     *
+     * @param albumName
+     */
     public  Album(String albumName){
         this.albumName = albumName;
         listofphotos = new ArrayList<Photos>();
     }
 
 
+    /**
+     *
+     * @return
+     */
     public String getAlbumName() {
         return albumName;
     }
 
+    /**
+     *
+     * @param albumName
+     */
     public void setAlbumName(String albumName) {
         this.albumName = albumName;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Photos> getListofphotos() {
         return listofphotos;
     }
 
+    /**
+     *
+     * @param photos
+     */
     public void setListofphotos(List<Photos> photos){
         listofphotos = photos;
         sizes = photos.size();
@@ -48,6 +71,11 @@ public class Album implements Serializable {
         this.set_old(this.listofphotos.get(this.sizes-1));
 
     }
+
+    /**
+     *
+     * @param photos
+     */
     public void addPhoto(Photos photos){
         this.listofphotos.add(photos);
         sizes++;
@@ -59,36 +87,67 @@ public class Album implements Serializable {
         this.set_old(this.listofphotos.get(this.sizes-1));
     }
 
+    /**
+     *
+     * @param photos
+     */
     public void removePhoto(Photos photos){
         this.listofphotos.remove(photos);
         sizes--;
         sorter();
 
     }
+
+    /**
+     *
+     * @param photo
+     * @return
+     */
     public boolean photoExists(Photos photo){
         return listofphotos.contains(photo);
     }
 
+    /**
+     *
+     * @param early
+     */
     public void set_early(Photos early){
         if(early!=null){
             this.early = early;
         }
     }
+
+    /**
+     *
+     * @param old
+     */
     public void set_old(Photos old){
         if(old!=null){
             this.old = old;
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public Photos getEarly(){
         return early;
     }
 
+    /**
+     *
+     * @return
+     */
     public Photos getOld() {
         return old;
     }
 
-
+    /**
+     *
+     * @param p
+     * @return
+     */
     public Photos prevPhoto(Photos p){
         if(p==null){
             return null;
@@ -108,6 +167,11 @@ public class Album implements Serializable {
         return p;
     }
 
+    /**
+     *
+     * @param p
+     * @return
+     */
     public Photos nextPhoto(Photos p){
         if(p==null){
             return null;
@@ -128,14 +192,19 @@ public class Album implements Serializable {
     }
 
 
-
+    /**
+     *
+     */
     public void sorter(){
         Collections.sort(listofphotos,(o1, o2) -> o1.getDate().compareTo(o2.getDate()));
 
 
     }
 
-
+    /**
+     *
+     * @return
+     */
     public String getDates(){
         if(this.sizes>0){
             return this.getOld() + " - " + this.getEarly();
@@ -143,6 +212,10 @@ public class Album implements Serializable {
         return "Empty Album";
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return getAlbumName();

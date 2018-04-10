@@ -37,9 +37,11 @@ private ArrayList<User> userArrayList;
 private ObservableList<User> obList;
 
 
-
-
-
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
 
    public void add() throws IOException, ClassNotFoundException {
 
@@ -80,11 +82,21 @@ private ObservableList<User> obList;
        }
 
    }
+
+    /**
+     *
+     */
    public void quit(){
 
       Stage stage= (Stage) adminQuit.getScene().getWindow();
        stage.close();
    }
+
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
    public void remove() throws IOException, ClassNotFoundException {
 
 
@@ -113,6 +125,11 @@ private ObservableList<User> obList;
            adminDel.showAndWait();
        }
    }
+
+    /**
+     *
+     * @throws IOException
+     */
    public void logout() throws IOException {
        FXMLLoader logout = new FXMLLoader(getClass().getResource("/View/photoLogin.fxml"));
        Parent root = (Parent) logout.load();
@@ -127,6 +144,11 @@ private ObservableList<User> obList;
 
    }
 
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
    private void populateList() throws IOException, ClassNotFoundException {
        albumUsers= AlbumUsers.readUsers();
        for(User u : albumUsers.getUsers()) {
@@ -140,7 +162,11 @@ private ObservableList<User> obList;
 
    }
 
-
+    /**
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
