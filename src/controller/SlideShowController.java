@@ -20,7 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
- * ${2 Player Chess }
+ *
  *
  * @author Arthkumar Desai
  * @author Roman Stashchyshyn
